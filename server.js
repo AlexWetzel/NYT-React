@@ -1,0 +1,44 @@
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const axios = require("axios");
+const request = require("request");
+// const routes = require("./routes");
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+// Configure body parser for AJAX requests
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+// Serve up static assets
+app.use(express.static("client/build"));
+// Add routes, both API and view
+// app.use(routes);
+
+// Set up promises with mongoose
+mongoose.Promise = global.Promise;
+// Connect to the Mongo DB
+// mongoose.connect(
+//   process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist",
+//   {
+//     useMongoClient: true
+//   }
+// );
+
+
+
+
+// Start the API server
+app.listen(PORT, function() {
+  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+request.get({
+  url: "https://api.nytimes.com/svc/search/v2/articlesearch.json",
+  qs: {
+    'api-key': "b8f0bfe73f7d4d5b975c40eb6f67b2e4",
+    'q': "microsoft"
+  },
+}, function(err, response, body) {
+  body = JSON.parse(body);
+  console.log(body.response.docs);
+})
+});

@@ -1,0 +1,26 @@
+{
+  "name": "nyt-react",
+  "version": "1.0.0",
+  "description": "new york times article search built with react",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexWetzel/NYT-React.git"
+  },
+  "author": "Alexander Wetzel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexWetzel/NYT-React/issues"
+  },
+  "homepage": "https://github.com/AlexWetzel/NYT-React#readme",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.9",
+    "request": "^2.83.0"
+  }
+}
