@@ -1,55 +1,19 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
+import Saved from './pages/Saved';
+import Home from './pages/Home';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="container">
-        <div className="card">
-          <h5 className="card-header">Search</h5>
-          <div className="card-body">
-            <form>
-              <div className="form-group">
-                <label for="exampleInputEmail1">Topic</label>
-                <input className="form-control" id="topic" />               
-              </div>
-              <div className="form-group">
-                <label for="exampleInputEmail1">Start Year</label>
-                <input className="form-control" id="startDate" />              
-              </div>
-              <div className="form-group">
-                <label for="exampleInputEmail1">End Year</label>
-                <input className="form-control" id="endDate" />                
-              </div>
+//TODO:
+const App = () =>
 
-              <button className="btn btn-primary">Search</ button>
-            </form>
-          </div>
+      <Router>
+        <div>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/saved" component={Saved} />
+          </Switch>
         </div>
-
-        <br />
-
-        <div className="card">
-          <h5 className="card-header">Results</h5>
-          <div className="card-body">
-
-          </div>
-        </div>
-
-        <br />
-
-        <div className="card">
-          <h5 className="card-header">Saved Articles</h5>
-          <div className="card-body">
-
-          </div>
-        </div>
-
-      </div>
-
-    );
-  }
-}
+      </Router>;
 
 export default App;
