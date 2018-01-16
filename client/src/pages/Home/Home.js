@@ -12,20 +12,8 @@ class Home extends Component {
     articles: []
   };
 
-  // componentDidMount() {
-  //   axios.get("/api/articles")
-  //     .then(res => console.log(res))
-  //     .catch(err => console.log(err));
-  // }
-
   articleQuery = event => {
-
-    event.preventDefault();
-
-    // console.log("Topic: ", this.state.topicQuery);
-    // console.log("Start Year: ", this.state.queryStartYear);
-    // console.log("End year: ", this.state.queryEndYear);
-    
+    event.preventDefault();    
     axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json",{
       params: {
         'api-key': "b8f0bfe73f7d4d5b975c40eb6f67b2e4",
@@ -123,7 +111,7 @@ class Home extends Component {
                   key={article.title}
                   headline={article.title}
                   link={article.url}
-                  date={article.date}
+                  date={article.date.slice(0, 10)}
                 >
                   <Save onClick={() => this.saveArticle(article)} />
                 </ResultCard>

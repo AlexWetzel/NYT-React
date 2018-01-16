@@ -2,10 +2,16 @@ import React from "react";
 
 const ResultCard = props =>
 	<div className="card">
+
+	  <div className="card-header">
+	  	<h3>{props.headline}</h3>
+	  </div>
 	  <div className="card-body">
-	    <h2>{props.headline}</h2>
+	  	<span>Published on: {props.date.slice(0, 10)}</span>
+	  	<div className="float-right">	    
 	    	{props.children}
-	    <a href={props.link} className="btn btn-primary">Link</a>
+	    	<a href={props.link} className="btn btn-primary">Link</a>
+	    </div>	    
 	  </div>
 	</div>;
 
