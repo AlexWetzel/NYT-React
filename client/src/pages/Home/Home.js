@@ -111,7 +111,7 @@ class Home extends Component {
                   key={article.title}
                   headline={article.title}
                   link={article.url}
-                  date={article.date.slice(0, 10)}
+                  date={article.date}
                 >
                   <Save onClick={() => this.saveArticle(article)} />
                 </ResultCard>
