@@ -4,7 +4,9 @@ const db = require("../models");
 const path = require("path");
 
 router.get("/api/articles", (req, res) => {
-	res.send("This is working")
+	db.Article.find()
+		.then(dbModel => res.json(dbModel))
+		.catch(err => console.log(err));
 })
 
 router.post("/api/articles", (req, res) => {
@@ -12,6 +14,15 @@ router.post("/api/articles", (req, res) => {
 	db.Article.create(req.body)
 		.then(dbModel => res.json(dbModel))
 		.catch(err => console.log(err));
+});
+
+router.delete("/api/articles/:id", (req, res) => {
+	const id = req.params.id
+	console.log(id);
+	db.Article.remove({_id: id})
+		.then(dbModel => res.json(dbModel))
+		.catch(err => console.log(err));
+
 });
 
 
