@@ -23,9 +23,4 @@ router.delete("/api/articles/:id", (req, res) => {
 		.catch(err => console.log(err));
 });
 
-// Home Page
-// router.use(function(req, res) {
-//   res.sendFile(path.join(__dirname, "./../client/build/index.html"));
-// });
-
 module.exports = router;

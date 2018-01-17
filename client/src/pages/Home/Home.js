@@ -11,20 +11,20 @@ class Home extends Component {
   };
 
   articleQuery = event => {
+    // Query the NYT API, then update the state with the returned articles
     event.preventDefault();    
     axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json",{
       params: {
         'api-key': "b8f0bfe73f7d4d5b975c40eb6f67b2e4",
         'q': this.state.topicQuery
-        // ,
-        // 'begin_date': this.state.queryStartYear + '0101',
-        // 'end_date': this.state.queryEndYear + '0101'
       }
     }).then(response => {  
         const articles = [];    
-        console.log(response.data.response.docs)
         response.data.response.docs.map(article => {
+          // Filter articles from the response, then push them to an array
+          // If the result had a publish date, it is an article (as opposed to a 'topic')
           if(article.pub_date) {
+            // Take desired properties from the results
             article = {
               title: article.headline.main,
               date: article.pub_date,
@@ -34,13 +34,13 @@ class Home extends Component {
           }
         });
         this.setState({ articles: articles })
-        console.log(this.state.articles);
       })
       .catch(err => console.log(err));
-
   }
 
+
   saveArticle = article => {
+  //Save the article to the database
     axios.post("/api/articles", article)
       .then(res => console.log(res))
       .catch(err => console.log(err));

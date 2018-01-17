@@ -10,10 +10,12 @@ class Saved extends Component {
 	}
 
 	componentDidMount() {
+    // Load articles after the state changes
 		this.loadArticles();
   }
 
   loadArticles = () => {
+    // Get saved articles from the database
   	axios.get("/api/articles")
       .then(res => {
       	console.log(res.data)
@@ -24,12 +26,12 @@ class Saved extends Component {
   };
 
 	deleteArticle = id => {
-		console.log(id);
+    // Delete the selected article from the database
     axios.delete("/api/articles/" + id)
       .then(res => {
       	console.log(res)
+        // Load articles on completion
       	this.loadArticles();
-
       })
       .catch(err => console.log(err));
   }

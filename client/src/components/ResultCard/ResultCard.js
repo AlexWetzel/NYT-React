@@ -1,8 +1,8 @@
 import React from "react";
 
+// Card that displays for each article
 const ResultCard = props =>
 	<div className="card">
-
 	  <div className="card-header">
 	  	<h3>{props.headline}</h3>
 	  </div>
