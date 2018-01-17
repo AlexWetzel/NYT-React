@@ -7,8 +7,6 @@ class Home extends Component {
   
   state = {
     topicQuery: "",
-    queryStartYear: "",
-    queryEndYear: "",
     articles: []
   };
 
@@ -105,29 +103,6 @@ class Home extends Component {
       </div>
     )
   }
-} 
-
+}
 
 export default Home;
-
-/*  Unused feature: Start date and end date search
-
-              <div className="form-group">
-                <label htmlFor="startDate">Start Year</label>
-                <input
-                  name="queryStartYear"
-                  onChange={this.handleInputChange}
-                  className="form-control"
-                  id="startDate"
-                />              
-              </div>
-              <div className="form-group">
-                <label htmlFor="endDate">End Year</label>
-                <input
-                  name="queryEndYear"
-                  onChange={this.handleInputChange}
-                  className="form-control"
-                  id="endDate"
-                />                
-              </div>
-*/

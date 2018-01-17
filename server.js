@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const axios = require("axios");
 const request = require("request");
 const routes = require("./routes/api.js")
-// const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -26,7 +25,7 @@ mongoose.connect(
   { useMongoClient: true }
 );
 
-
+// Directs Heroku to the right page on the build version
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
@@ -34,6 +33,4 @@ app.get("*", function(req, res) {
 // Start the API server
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
-
-
 });

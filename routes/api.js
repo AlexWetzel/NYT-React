@@ -3,6 +3,7 @@ const router = require("express").Router();
 const db = require("../models");
 const path = require("path");
 
+// API routes
 router.get("/api/articles", (req, res) => {
 	db.Article.find()
 		.then(dbModel => res.json(dbModel))
@@ -23,8 +24,8 @@ router.delete("/api/articles/:id", (req, res) => {
 });
 
 // Home Page
-router.use(function(req, res) {
-  res.sendFile(path.join(__dirname, "./../client/build/index.html"));
-});
+// router.use(function(req, res) {
+//   res.sendFile(path.join(__dirname, "./../client/build/index.html"));
+// });
 
 module.exports = router;
