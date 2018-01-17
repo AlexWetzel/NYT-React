@@ -73,24 +73,7 @@ class Home extends Component {
                   id="topic"
                 />               
               </div>
-              <div className="form-group">
-                <label htmlFor="startDate">Start Year</label>
-                <input
-                  name="queryStartYear"
-                  onChange={this.handleInputChange}
-                  className="form-control"
-                  id="startDate"
-                />              
-              </div>
-              <div className="form-group">
-                <label htmlFor="endDate">End Year</label>
-                <input
-                  name="queryEndYear"
-                  onChange={this.handleInputChange}
-                  className="form-control"
-                  id="endDate"
-                />                
-              </div>
+
 
               <button
                 onClick={ this.articleQuery }
@@ -126,3 +109,25 @@ class Home extends Component {
 
 
 export default Home;
+
+/*  Unused feature: Start date and end date search
+
+              <div className="form-group">
+                <label htmlFor="startDate">Start Year</label>
+                <input
+                  name="queryStartYear"
+                  onChange={this.handleInputChange}
+                  className="form-control"
+                  id="startDate"
+                />              
+              </div>
+              <div className="form-group">
+                <label htmlFor="endDate">End Year</label>
+                <input
+                  name="queryEndYear"
+                  onChange={this.handleInputChange}
+                  className="form-control"
+                  id="endDate"
+                />                
+              </div>
+*/
