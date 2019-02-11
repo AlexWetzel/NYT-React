@@ -7,7 +7,7 @@ function Nav() {
     <div>
       <div className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container">
-          <h1 className="navbar-brand">NYT Search</h1>
+          <div className="navbar-brand">News React</div>
         </div>
       </div>
 
