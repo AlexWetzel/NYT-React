@@ -1,3 +1,8 @@
+#Bad news!
+
+Seems like my API key won't work anymore! I'm going to salvage this app somehow, but for now it won't work as intended.
+
+
 # NYT-React
 A New York Times article search app built with React
 
