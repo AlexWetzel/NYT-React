@@ -1,14 +1,14 @@
 {
   "name": "nyt-react",
-  "version": "1.0.0",
-  "description": "new york times article search built with react",
+  "version": "2.0.0",
+  "description": "news article search built with react",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "node server.js",
-    "client": "node scripts/start-client.js",
-    "start": "concurrently \"nodemon server.js\" \"npm run client\"",
-    "build": "node scripts/build.js"
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "concurrently": "^3.5.0",
     "express": "^4.16.2",
     "mongoose": "^4.13.9",
+    "nodemon": "^1.18.10",
     "request": "^2.88.0"
   }
 }
