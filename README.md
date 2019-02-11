@@ -1,15 +1,22 @@
-#Bad news!
+#Under Reconstruction
 
-Seems like my API key won't work anymore! I'm going to salvage this app somehow, but for now it won't work as intended.
+This project is currently being rebuilt using the News API.
 
+I'll be having this working ASAP, so if you're reading this, watch this space!
 
-# NYT-React
-A New York Times article search app built with React
+# News-React
+A News article search app built with React, using the News API.
 
-link: https://young-cove-99706.herokuapp.com/
+link: https://newsreact-awetzel.herokuapp.com/
 
 ### Instructions
 
-On the home page, enter a topic in the text field, then hit the search button to query the New York Times database. The results will dispay in separate panels in the 'Results' section. These panels have an article headline, a publish date, a link to the full article, and a 'Save' button.
+On the home page, enter a topic in the text field, then hit the search button to query the News API database. The results will dispay in separate panels in the 'Results' section. These panels have an article headline, a publish date, a link to the full article, and a 'Save' button.
 
 Saving an article lets you view it later on the saved article page. These articles will be visible to anyone who visits the site. To remove the article, hit the 'Delete' button on the panel.
+
+### Special Thanks
+
+Special thanks to the News API for providing the API for my project.
+
+Check it out here: https://newsapi.org/
