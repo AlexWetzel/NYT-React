@@ -1,9 +1,3 @@
-#Under Reconstruction
-
-This project is currently being rebuilt using the News API.
-
-I'll be having this working ASAP, so if you're reading this, watch this space!
-
 # News-React
 A News article search app built with React, using the News API.
 
