@@ -10,28 +10,33 @@ class Home extends Component {
     articles: []
   };
 
-  articleQuery = event => {
+   articleQuery = event => {
     // Query the NYT API, then update the state with the returned articles
-    event.preventDefault();    
-    axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json",{
+    event.preventDefault();  
+    
+    
+    axios.get("https://newsapi.org/v2/everything",
+    {
       params: {
-        'api-key': "b8f0bfe73f7d4d5b975c40eb6f67b2e4",
-        'q': this.state.topicQuery
+        'apiKey': '2d031f069b544ac99ca0c782f0783b95',
+        'q': this.state.topicQuery,
+        'pageSize': 10
       }
-    }).then(response => {  
+    }
+    ).then(response => {  
         const articles = [];    
-        response.data.response.docs.forEach(article => {
+
+        console.log(response);
+        response.data.articles.forEach(article => {
           // Filter articles from the response, then push them to an array
           // If the result had a publish date, it is an article (as opposed to a 'topic')
-          if(article.pub_date) {
             // Take desired properties from the results
-            article = {
-              title: article.headline.main,
-              date: article.pub_date,
-              url: article.web_url
-            }
-            articles.push(article);
+          article = {
+            title: article.title,
+            date: article.publishedAt,
+            url: article.url
           }
+          articles.push(article);
         });
         this.setState({ articles: articles });
       })
