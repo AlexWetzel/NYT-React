@@ -2,7 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const axios = require("axios");
-const request = require("request");
 const routes = require("./routes/api.js")
 
 const app = express();

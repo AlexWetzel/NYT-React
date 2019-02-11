@@ -20,7 +20,7 @@ class Home extends Component {
       }
     }).then(response => {  
         const articles = [];    
-        response.data.response.docs.map(article => {
+        response.data.response.docs.forEach(article => {
           // Filter articles from the response, then push them to an array
           // If the result had a publish date, it is an article (as opposed to a 'topic')
           if(article.pub_date) {
@@ -33,7 +33,7 @@ class Home extends Component {
             articles.push(article);
           }
         });
-        this.setState({ articles: articles })
+        this.setState({ articles: articles });
       })
       .catch(err => console.log(err));
   }
