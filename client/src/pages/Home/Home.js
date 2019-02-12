@@ -18,7 +18,7 @@ class Home extends Component {
     axios.get("https://newsapi.org/v2/everything",
     {
       params: {
-        'apiKey': '2d031f069b544ac99ca0c782f0783b95',
+        'apiKey': process.env.REACT_APP_API_KEY,
         'q': this.state.topicQuery,
         'pageSize': 10
       }

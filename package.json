@@ -22,7 +22,10 @@
   "homepage": "https://github.com/AlexWetzel/NYT-React#readme",
   "devDependencies": {
     "concurrently": "^3.5.0",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "dependencies": {
     "axios": "^0.17.1",

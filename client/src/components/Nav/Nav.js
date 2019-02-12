@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 function Nav() {
   return (
     <div>
-      <div className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <header className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container">
           <div className="navbar-brand">News React</div>
         </div>
-      </div>
+      </header>
 
-      <div className="container">
+      <nav className="container">
         <ul className="nav nav-tabs">
           <li className="nav-item">
             <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>Home</Link>
@@ -20,7 +20,7 @@ function Nav() {
             <Link to="/saved" className={window.location.pathname === "/about" ? "nav-link active" : "nav-link"}>Saved Articles</Link>
           </li>
         </ul>
-      </div>
+      </nav>
     </div>
   )
 }
