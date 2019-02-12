@@ -39,5 +39,6 @@ class Saved extends Component {
       </div>
 		)
 	}
-} 
+}
+
 export default connect(mapStateToProps, actionCreators)(Saved);

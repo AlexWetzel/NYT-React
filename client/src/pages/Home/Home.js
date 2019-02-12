@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ResultCard from "./../../components/ResultCard";
 import Save from "./../../components/Save";
+import Card from "./../../components/Card";
+import SearchForm from "./../../components/SearchForm";
 import { connect } from 'react-redux';
 import { getArticles, saveArticle } from '../../js/actions/index';
 
@@ -13,8 +15,13 @@ const actionCreators = {
   saveArticle
 }
 
-
 class Home extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.articleQuery = this.articleQuery.bind(this);
+  }
   
   state = {
     topicQuery: "",
@@ -34,15 +41,6 @@ class Home extends Component {
     this.props.getArticles(params);
   }
 
-
-  // saveArticle = article => {
-  // //Save the article to the database
-  //   this.props.saveArticle(article);
-  //   // axios.post("/api/articles", article)
-  //   //   .then(res => console.log(res))
-  //   //   .catch(err => console.log(err));
-  // }
-
   handleInputChange = event => {
     // Destructure the name and value properties off of event.target
     // Update the appropriate state
@@ -55,48 +53,34 @@ class Home extends Component {
   render() {
     return (
       <div className="container">
-        <div className="card">
-          <h5 className="card-header">Search</h5>
-          <div className="card-body">
-            <form>
-              <div className="form-group">
-                <label htmlFor="topic">Topic</label>
-                <input
-                  name="topicQuery"
-                  onChange={this.handleInputChange}
-                  className="form-control"
-                  id="topic"
-                />               
-              </div>
 
-
-              <button
-                onClick={ this.articleQuery }
-                className="btn btn-primary"
-              >Search</ button>
-            </form>
-          </div>
-        </div>
+        <Card
+          title="Search"
+          content={
+            <SearchForm
+              handleInputChange={e => this.handleInputChange(e)}
+              articleQuery={e => this.articleQuery(e)}            
+            />
+          }
+        />
 
       <br />
 
-        <div className="card">
-          <h5 className="card-header">Results</h5>
-          <div className="card-body">
-            {this.props.articles.map(article => {
-              return (
-                <ResultCard 
-                  key={article.title}
-                  headline={article.title}
-                  link={article.url}
-                  date={article.date}
-                >
-                  <Save onClick={() => this.props.saveArticle(article)} />
-                </ResultCard>
-              );
-            })}
-          </div>
-        </div>
+        <Card 
+          title="Search Results"
+          content={this.props.articles.map(article => {
+            return (
+              <ResultCard 
+                key={article.title}
+                headline={article.title}
+                link={article.url}
+                date={article.date}
+              >
+                <Save onClick={() => this.props.saveArticle(article)} />
+              </ResultCard>
+            );
+          })}
+        />
       </div>
     )
   }

@@ -10,7 +10,12 @@ import store from './js/store';
 const App = () =>
 	<Provider store={store}>
 		<Router>
-			<div>
+			<div style={{
+				minHeight: '100vh',
+				position: 'relative',
+				overflow: 'auto',
+				paddingBottom: '100px'
+			}}>
 				<Nav />
 				<Switch>
 					<Route exact path="/" component={Home} />
