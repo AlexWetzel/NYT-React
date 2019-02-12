@@ -1,45 +1,29 @@
 import React, { Component } from 'react';
-import axios from "axios";
 import ResultCard from "./../../components/ResultCard";
 import Delete from "./../../components/Delete";
+import { connect } from 'react-redux';
+import { getSavedArticles, removeArticle } from '../../js/actions/index';
+
+const mapStateToProps = state => {
+  return { savedArticles: state.savedArticles }
+}
+
+const actionCreators = {
+  getSavedArticles,
+  removeArticle
+}
 
 class Saved extends Component {
 
-	state = {
-		articles: []
-	}
-
 	componentDidMount() {
     // Load articles after the state changes
-		this.loadArticles();
-  }
-
-  loadArticles = () => {
-    // Get saved articles from the database
-  	axios.get("/api/articles")
-      .then(res => {
-      	console.log(res.data)
-      	const box = res.data
-      	this.setState({ articles: box })
-      })
-      .catch(err => console.log(err));
-  };
-
-	deleteArticle = id => {
-    // Delete the selected article from the database
-    axios.delete("/api/articles/" + id)
-      .then(res => {
-      	console.log(res)
-        // Load articles on completion
-      	this.loadArticles();
-      })
-      .catch(err => console.log(err));
+		this.props.getSavedArticles();
   }
 
 	render() {
 		return (
 			<div className="container">
-			  {this.state.articles.map(article => {
+			  {this.props.savedArticles.map(article => {
           return (
             <ResultCard 
               key={article.title}
@@ -48,7 +32,7 @@ class Saved extends Component {
               link={article.url}
               date={article.date}
             >
-              <Delete onClick={() => this.deleteArticle(article._id)} />
+              <Delete onClick={() => this.props.removeArticle(article._id)} />
             </ResultCard>
           );
         })}
@@ -56,5 +40,4 @@ class Saved extends Component {
 		)
 	}
 } 
-
-export default Saved;
+export default connect(mapStateToProps, actionCreators)(Saved);

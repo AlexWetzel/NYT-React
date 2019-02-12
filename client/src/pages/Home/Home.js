@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import ResultCard from "./../../components/ResultCard";
 import Save from "./../../components/Save";
-import axios from 'axios';
 import { connect } from 'react-redux';
-import { getArticles } from '../../js/actions/index';
+import { getArticles, saveArticle } from '../../js/actions/index';
 
-const mapStateToProps =  state => {
+const mapStateToProps = state => {
   return { articles: state.articles };
+}
+
+const actionCreators = {
+  getArticles,
+  saveArticle
 }
 
 
@@ -31,12 +35,13 @@ class Home extends Component {
   }
 
 
-  saveArticle = article => {
-  //Save the article to the database
-    axios.post("/api/articles", article)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-  }
+  // saveArticle = article => {
+  // //Save the article to the database
+  //   this.props.saveArticle(article);
+  //   // axios.post("/api/articles", article)
+  //   //   .then(res => console.log(res))
+  //   //   .catch(err => console.log(err));
+  // }
 
   handleInputChange = event => {
     // Destructure the name and value properties off of event.target
@@ -86,7 +91,7 @@ class Home extends Component {
                   link={article.url}
                   date={article.date}
                 >
-                  <Save onClick={() => this.saveArticle(article)} />
+                  <Save onClick={() => this.props.saveArticle(article)} />
                 </ResultCard>
               );
             })}
@@ -97,4 +102,4 @@ class Home extends Component {
   }
 }
 
-export default connect(mapStateToProps, { getArticles })(Home);
+export default connect(mapStateToProps, actionCreators)(Home);

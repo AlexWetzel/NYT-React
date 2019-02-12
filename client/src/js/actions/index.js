@@ -1,10 +1,5 @@
-import { ADD_ARTICLE, GET_ARTICLES } from "../constants/action-types";
+import { GET_ARTICLES, GET_SAVED_ARTICLES, SAVE_ARTICLE, REMOVE_SAVED_ARTICLE } from "../constants/action-types";
 import axios from 'axios';
-
-
-export function addArticle(payload) {
-  return { type: ADD_ARTICLE, payload };
-}
 
 export function getArticles(params) {
   return function(dispatch) {
@@ -15,18 +10,43 @@ export function getArticles(params) {
       )
       .then(response => {
         console.log(response);
-        // const articles = response.data.articles.map(article => {
-        //   return article = {
-        //     title: article.title,
-        //     date: article.publishedAt,
-        //     url: article.url
-        //   };
-        // });
         dispatch({ type: GET_ARTICLES, payload: response });
       });
   }
 }
 
-// export function saveArticle() {
+export function getSavedArticles(params) {
+  return function(dispatch) {
+    return axios
+      .get("/api/articles")
+      .then(response => {
+        console.log(response);
+        dispatch({ type: GET_SAVED_ARTICLES, payload: response.data });
+      });
+  }
+}
 
-// }
+export function saveArticle(article) {
+  return function(dispatch) {
+    return axios
+      .post("/api/articles", article)
+      .then(response => {
+        console.log(response);
+        dispatch({ type: SAVE_ARTICLE });
+      })
+      // .catch(err => console.log(err));
+  }
+}
+
+export function removeArticle(id) {
+  return function(dispatch) {
+    console.log('test')
+    return axios
+      .delete("/api/articles/" + id)
+      .then(response => {
+        console.log(response);
+        dispatch({ type: REMOVE_SAVED_ARTICLE, payload: id });
+      })
+      // .catch(err => console.log(err));
+  }
+}

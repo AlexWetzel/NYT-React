@@ -7,7 +7,6 @@ import Nav from './components/Nav';
 import Footer from './components/Footer';
 import store from './js/store';
 
-
 const App = () =>
 	<Provider store={store}>
 		<Router>
