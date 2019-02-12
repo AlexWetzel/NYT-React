@@ -1,4 +1,4 @@
-import { ADD_ARTICLE } from "../constants/action-types";
+import { ADD_ARTICLE, GET_ARTICLES } from "../constants/action-types";
 
 const initialState = {
   articles: []

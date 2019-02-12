@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import ResultCard from "./../../components/ResultCard";
 import Save from "./../../components/Save";
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { getArticles } from '../../js/actions/index';
+
+const mapStateToProps =  state => {
+  return { articles: state.articles };
+}
+
 
 class Home extends Component {
   
@@ -12,35 +19,40 @@ class Home extends Component {
 
    articleQuery = event => {
     // Query the NYT API, then update the state with the returned articles
-    event.preventDefault();  
-    
-    
-    axios.get("https://newsapi.org/v2/everything",
-    {
-      params: {
-        'apiKey': process.env.REACT_APP_API_KEY,
-        'q': this.state.topicQuery,
-        'pageSize': 10
-      }
-    }
-    ).then(response => {  
-        const articles = [];    
+    event.preventDefault();
 
-        console.log(response);
-        response.data.articles.forEach(article => {
-          // Filter articles from the response, then push them to an array
-          // If the result had a publish date, it is an article (as opposed to a 'topic')
-            // Take desired properties from the results
-          article = {
-            title: article.title,
-            date: article.publishedAt,
-            url: article.url
-          }
-          articles.push(article);
-        });
-        this.setState({ articles: articles });
-      })
-      .catch(err => console.log(err));
+    const params = {
+      'apiKey': process.env.REACT_APP_API_KEY,
+      'q': this.state.topicQuery,
+      'pageSize': 10
+    }
+    
+    this.props.getArticles(params);
+    
+    
+  //   axios.get("https://newsapi.org/v2/everything",
+  //   {
+  //     params: {
+  //       'apiKey': process.env.REACT_APP_API_KEY,
+  //       'q': this.state.topicQuery,
+  //       'pageSize': 10
+  //     }
+  //   }
+  //   ).then(response => {  
+  //       const articles = [];    
+
+  //       console.log(response);
+  //       response.data.articles.forEach(article => {
+  //         article = {
+  //           title: article.title,
+  //           date: article.publishedAt,
+  //           url: article.url
+  //         }
+  //         articles.push(article);
+  //       });
+  //       this.setState({ articles: articles });
+  //     })
+  //     .catch(err => console.log(err));
   }
 
 
@@ -91,7 +103,7 @@ class Home extends Component {
         <div className="card">
           <h5 className="card-header">Results</h5>
           <div className="card-body">
-            {this.state.articles.map(article => {
+            {this.props.articles.map(article => {
               return (
                 <ResultCard 
                   key={article.title}
@@ -110,4 +122,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default connect(mapStateToProps, { getArticles })(Home);
