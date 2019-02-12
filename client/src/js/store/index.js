@@ -1,8 +1,9 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "../reducers/index";
 import thunk from 'redux-thunk';
+import { formatArticles } from '../middleware/formatArticles';
 
-const middleware = [thunk];
+const middleware = [thunk, formatArticles];
 
 const store = createStore(
   rootReducer,

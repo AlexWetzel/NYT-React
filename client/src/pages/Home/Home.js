@@ -28,31 +28,6 @@ class Home extends Component {
     }
     
     this.props.getArticles(params);
-    
-    
-  //   axios.get("https://newsapi.org/v2/everything",
-  //   {
-  //     params: {
-  //       'apiKey': process.env.REACT_APP_API_KEY,
-  //       'q': this.state.topicQuery,
-  //       'pageSize': 10
-  //     }
-  //   }
-  //   ).then(response => {  
-  //       const articles = [];    
-
-  //       console.log(response);
-  //       response.data.articles.forEach(article => {
-  //         article = {
-  //           title: article.title,
-  //           date: article.publishedAt,
-  //           url: article.url
-  //         }
-  //         articles.push(article);
-  //       });
-  //       this.setState({ articles: articles });
-  //     })
-  //     .catch(err => console.log(err));
   }
 
 

@@ -1,7 +1,8 @@
-import { ADD_ARTICLE, GET_ARTICLES } from "../constants/action-types";
+import { ADD_ARTICLE, GET_ARTICLES, SAVE_ARTICLE, REMOVE_SAVED_ARTICLE } from "../constants/action-types";
 
 const initialState = {
-  articles: []
+  articles: [],
+  savedArticles: []
 };
 
 // function rootReducer(state = initialState, action) {
@@ -20,8 +21,16 @@ function rootReducer(state = initialState, action) {
       });
     case GET_ARTICLES:
       return Object.assign({}, state, {
-        articles: state.articles.concat(action.payload)
+        articles: action.payload
       });
+    case SAVE_ARTICLE:
+      return Object.assign({}, state, {
+        savedArticles: action.payload
+      })
+    case REMOVE_SAVED_ARTICLE:
+      return Object.assign({}, state, {
+        savedArticles: action.payload
+      })
     default:
       return state;
   }

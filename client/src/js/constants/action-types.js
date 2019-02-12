@@ -1,2 +1,4 @@
 export const ADD_ARTICLE = "ADD_ARTICLE";
 export const GET_ARTICLES = "ADD_ARTICLES";
+export const SAVE_ARTICLE = "SAVE_ARTICLE";
+export const REMOVE_SAVED_ARTICLE = "REMOVE_SAVED_ARTICLE";

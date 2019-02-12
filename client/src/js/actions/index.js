@@ -15,14 +15,18 @@ export function getArticles(params) {
       )
       .then(response => {
         console.log(response);
-        const articles = response.data.articles.map(article => {
-          return article = {
-            title: article.title,
-            date: article.publishedAt,
-            url: article.url
-          };
-        });
-        dispatch({ type: GET_ARTICLES, payload: articles });
+        // const articles = response.data.articles.map(article => {
+        //   return article = {
+        //     title: article.title,
+        //     date: article.publishedAt,
+        //     url: article.url
+        //   };
+        // });
+        dispatch({ type: GET_ARTICLES, payload: response });
       });
   }
 }
+
+// export function saveArticle() {
+
+// }
