@@ -35,8 +35,10 @@ class Home extends Component {
     // Query the NYT API, then update the state with the returned articles
     event.preventDefault();
 
+    const key = process.env.API_KEY || process.env.REACT_APP_API_KEY;
+    console.log(key);
     const params = {
-      'apiKey': process.env.REACT_APP_API_KEY,
+      'apiKey': key,
       'q': this.state.queryValue,
       'pageSize': 10
     }
