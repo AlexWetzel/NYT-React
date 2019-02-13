@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export function getArticles(params) {
   return function(dispatch) {
+    console.log(params);
     return axios
       .get(
         "https://newsapi.org/v2/everything",
