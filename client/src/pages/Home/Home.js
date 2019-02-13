@@ -34,7 +34,7 @@ class Home extends Component {
    articleQuery = event => {
     // Query the NYT API, then update the state with the returned articles
     event.preventDefault();
-
+    console.log("heroku key:", process.env.API_KEY)
     const key = process.env.API_KEY || process.env.REACT_APP_API_KEY;
     console.log(key);
     const params = {
