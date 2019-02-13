@@ -15,10 +15,10 @@ const actionCreators = {
 
 class Saved extends Component {
 
-	componentDidMount() {
-    // Load articles after the state changes
-		this.props.getSavedArticles();
-  }
+	// componentDidMount() {
+  //   // Load articles after the state changes
+	// 	this.props.getSavedArticles();
+  // }
 
 	render() {
 		return (

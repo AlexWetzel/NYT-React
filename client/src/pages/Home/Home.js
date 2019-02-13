@@ -7,7 +7,10 @@ import { connect } from 'react-redux';
 import { getArticles, saveArticle } from '../../js/actions/index';
 
 const mapStateToProps = state => {
-  return { articles: state.articles };
+  return {
+    articles: state.articles,
+    savedArticles: state.savedArticles
+  };
 }
 
 const actionCreators = {
@@ -50,6 +53,19 @@ class Home extends Component {
     });
   };
 
+  checkIfSaved = url => {
+    let isSaved = false;
+    console.log(this.props.savedArticles);
+    const foundArticle = this.props.savedArticles
+      .find(savedArticle => {
+        return savedArticle.url === url;
+      });
+
+    if (foundArticle) {isSaved = true};
+    console.log(isSaved);
+    return isSaved;
+  }
+
   render() {
     return (
       <div className="container">
@@ -75,8 +91,12 @@ class Home extends Component {
                 headline={article.title}
                 link={article.url}
                 date={article.date}
+
               >
-                <Save onClick={() => this.props.saveArticle(article)} />
+                <Save 
+                  onClick={() => this.props.saveArticle(article)}
+                  isSaved={this.checkIfSaved(article.url)}
+                />
               </ResultCard>
             );
           })}

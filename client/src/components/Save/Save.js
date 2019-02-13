@@ -1,9 +1,11 @@
 import React from "react";
 
-// The ...props means, spread all of the passed props onto this element
-// That way we don't have to define them all individually
-const Save = props => (
-  <button type="button" className="btn btn-primary" {...props} >Save</button>
-);
-
+function Save(props) {
+  console.log(props.isSaved)
+  return props.isSaved === true ? (
+    <button type="button" className="btn btn-danger" onClick={props.onClick}  disabled>Saved</button>
+  ) : (
+    <button type="button" className="btn btn-primary" onClick={props.onClick} >Save</button>
+  )  
+}
 export default Save;

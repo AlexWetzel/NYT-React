@@ -13,7 +13,6 @@ export default function SearchForm(props) {
         />               
       </div>
 
-
       <button
         onClick={props.articleQuery}
         className="btn btn-primary"
