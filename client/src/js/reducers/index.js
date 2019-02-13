@@ -16,7 +16,9 @@ function rootReducer(state = initialState, action) {
         savedArticles: action.payload
       });
     case SAVE_ARTICLE:
-      return state
+      return Object.assign({}, state, {
+        savedArticles: state.savedArticles.concat(action.payload)
+      });
     case REMOVE_SAVED_ARTICLE:
       return {
         ...state,

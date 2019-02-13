@@ -1,22 +1,32 @@
 import React from 'react'
 
-export default function SearchForm(props) {
+function SearchForm(props) {
   return (
-    <form>
+    <form onSubmit={props.articleQuery}>
       <div className="form-group">
         <label htmlFor="topic">Topic</label>
         <input
-          name="topicQuery"
+          name="queryValue"
           onChange={props.handleInputChange}
           className="form-control"
           id="topic"
         />               
       </div>
 
-      <button
+      <SearchButton
         onClick={props.articleQuery}
-        className="btn btn-primary"
-      >Search</ button>
+        queryValue={props.queryValue}
+      />
     </form>
   )
 }
+
+function SearchButton(props) {
+  return props.queryValue === "" ? (
+    <button type="button" className="btn float-right" disabled>Search</button>
+  ) : (
+    <button type="button" className="btn btn-primary float-right" onClick={props.onClick} >Search</button>
+  )  
+}
+
+export default SearchForm

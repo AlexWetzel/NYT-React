@@ -12,7 +12,8 @@ export function formatArticles({ dispatch }) {
             return article = {
               title: article.title,
               date: article.publishedAt,
-              url: article.url
+              url: article.url,
+              description: article.description
             };
           });
 

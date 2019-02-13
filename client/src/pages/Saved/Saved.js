@@ -15,11 +15,6 @@ const actionCreators = {
 
 class Saved extends Component {
 
-	// componentDidMount() {
-  //   // Load articles after the state changes
-	// 	this.props.getSavedArticles();
-  // }
-
 	render() {
 		return (
 			<div className="container">
@@ -31,6 +26,7 @@ class Saved extends Component {
               headline={article.title}
               link={article.url}
               date={article.date}
+              description={article.description}
             >
               <Delete onClick={() => this.props.removeArticle(article._id)} />
             </ResultCard>

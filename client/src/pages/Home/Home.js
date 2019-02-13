@@ -27,7 +27,7 @@ class Home extends Component {
   }
   
   state = {
-    topicQuery: "",
+    queryValue: "",
     articles: []
   };
 
@@ -37,7 +37,7 @@ class Home extends Component {
 
     const params = {
       'apiKey': process.env.REACT_APP_API_KEY,
-      'q': this.state.topicQuery,
+      'q': this.state.queryValue,
       'pageSize': 10
     }
     
@@ -55,14 +55,12 @@ class Home extends Component {
 
   checkIfSaved = url => {
     let isSaved = false;
-    console.log(this.props.savedArticles);
     const foundArticle = this.props.savedArticles
       .find(savedArticle => {
         return savedArticle.url === url;
       });
 
     if (foundArticle) {isSaved = true};
-    console.log(isSaved);
     return isSaved;
   }
 
@@ -75,7 +73,8 @@ class Home extends Component {
           content={
             <SearchForm
               handleInputChange={e => this.handleInputChange(e)}
-              articleQuery={e => this.articleQuery(e)}            
+              articleQuery={e => this.articleQuery(e)}
+              queryValue={this.state.queryValue}           
             />
           }
         />
@@ -91,7 +90,7 @@ class Home extends Component {
                 headline={article.title}
                 link={article.url}
                 date={article.date}
-
+                description={article.description}
               >
                 <Save 
                   onClick={() => this.props.saveArticle(article)}

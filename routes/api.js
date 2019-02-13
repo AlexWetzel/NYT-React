@@ -9,6 +9,7 @@ router.get("/api/articles", (req, res) => {
 })
 
 router.post("/api/articles", (req, res) => {
+	console.log(req.body);
 	db.Article.create(req.body)
 		.then(dbModel => res.json(dbModel))
 		.catch(err => console.log(err));

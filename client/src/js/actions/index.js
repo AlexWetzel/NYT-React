@@ -32,7 +32,7 @@ export function saveArticle(article) {
       .post("/api/articles", article)
       .then(response => {
         console.log(response);
-        dispatch({ type: SAVE_ARTICLE });
+        dispatch({ type: SAVE_ARTICLE, payload: article });
       })
       // .catch(err => console.log(err));
   }
