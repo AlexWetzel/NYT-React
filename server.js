@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const routes = require("./routes/api.js");
 const path = require("path");
+require('dotenv').config();
 
 const app = express();
 
@@ -34,5 +35,4 @@ app.get("*", function(req, res) {
 // Start the API server
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
-  console.log(process.env.API_KEY);
 });

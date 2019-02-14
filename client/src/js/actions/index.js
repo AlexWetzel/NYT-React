@@ -3,15 +3,10 @@ import axios from 'axios';
 
 export function getArticles(params) {
   return function(dispatch) {
-    console.log(params);
     return axios
-      .get(
-        "https://newsapi.org/v2/everything",
-        { params }
-      )
+      .get("/api/query", {params: params})
       .then(response => {
-        console.log(response);
-        dispatch({ type: GET_ARTICLES, payload: response });
+        dispatch({ type: GET_ARTICLES, payload: response })
       });
   }
 }
@@ -21,7 +16,6 @@ export function getSavedArticles(params) {
     return axios
       .get("/api/articles")
       .then(response => {
-        console.log(response);
         dispatch({ type: GET_SAVED_ARTICLES, payload: response.data });
       });
   }
@@ -32,8 +26,8 @@ export function saveArticle(article) {
     return axios
       .post("/api/articles", article)
       .then(response => {
-        console.log(response);
-        dispatch({ type: SAVE_ARTICLE, payload: article });
+        const newArticle = response.data.article
+        dispatch({ type: SAVE_ARTICLE, payload: newArticle });
       })
       // .catch(err => console.log(err));
   }
@@ -45,7 +39,6 @@ export function removeArticle(id) {
     return axios
       .delete("/api/articles/" + id)
       .then(response => {
-        console.log(response);
         dispatch({ type: REMOVE_SAVED_ARTICLE, payload: id });
       })
       // .catch(err => console.log(err));
