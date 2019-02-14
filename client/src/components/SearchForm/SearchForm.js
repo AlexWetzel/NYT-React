@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from "prop-types";
 
 function SearchForm(props) {
   return (
@@ -29,4 +30,10 @@ function SearchButton(props) {
   )  
 }
 
-export default SearchForm
+SearchForm.propTypes = {
+  articleQuery: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+  queryValue: PropTypes.string
+}
+
+export default SearchForm;

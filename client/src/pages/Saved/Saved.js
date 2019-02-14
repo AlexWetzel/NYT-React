@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from "prop-types"
 import ResultCard from "./../../components/ResultCard";
 import Delete from "./../../components/Delete";
 import { connect } from 'react-redux';
@@ -28,13 +29,18 @@ class Saved extends Component {
               date={article.date}
               description={article.description}
             >
-              <Delete onClick={() => this.props.removeArticle(article._id)} />
+              <Delete remove={() => this.props.removeArticle(article._id)} />
             </ResultCard>
           );
         })}
       </div>
 		)
 	}
+}
+
+Saved.propTypes = {
+  savedArticles: PropTypes.arrayOf(PropTypes.object),
+  removeArticle: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, actionCreators)(Saved);

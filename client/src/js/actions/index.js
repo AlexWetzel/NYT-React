@@ -11,7 +11,7 @@ export function getArticles(params) {
   }
 }
 
-export function getSavedArticles(params) {
+export function getSavedArticles() {
   return function(dispatch) {
     return axios
       .get("/api/articles")

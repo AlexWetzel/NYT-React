@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from "prop-types";
 import ResultCard from "./../../components/ResultCard";
 import Save from "./../../components/Save";
 import Card from "./../../components/Card";
@@ -92,7 +93,7 @@ class Home extends Component {
                 description={article.description}
               >
                 <Save 
-                  onClick={() => this.props.saveArticle(article)}
+                  save={() => this.props.saveArticle(article)}
                   isSaved={this.checkIfSaved(article.url)}
                 />
               </ResultCard>
@@ -102,6 +103,13 @@ class Home extends Component {
       </div>
     )
   }
+}
+
+Home.propTypes = {
+  articles: PropTypes.arrayOf(PropTypes.object),
+  savedArticles: PropTypes.arrayOf(PropTypes.object),
+  saveArticle: PropTypes.func.isRequired,
+  getArticles: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, actionCreators)(Home);

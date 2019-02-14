@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 // Card that displays for each article
 function ResultCard(props) {
@@ -20,6 +21,14 @@ function ResultCard(props) {
 			</div>
 		</div>
 	)
+}
+
+ResultCard.propTypes = {
+	headline: PropTypes.string,
+	description: PropTypes.string,
+	link: PropTypes.string,
+	date: PropTypes.string,
+	children: PropTypes.element.isRequired
 }
 
 export default ResultCard;
